@@ -137,6 +137,14 @@ module RSpreedly
       true
     end
 
+    # Change a subscriber's subscription plan
+    # POST /api/v4/[short site name]/subscribers/[subscriber id]/change_subscription_plan.xml
+    def change_subscription(subscription)
+      result = api_request(:post, "/subscribers/#{self.customer_id}/change_subscription_plan.xml", :body => subscription.to_xml)
+      self.attributes = result["subscriber"]
+      true
+    end
+
     # Give a subscriber a complimentary time extension (more)
     # POST /api/v4/[short site name]/subscribers/[subscriber id]/complimentary_time_extension.xml
     def comp_time_extension(extension)
