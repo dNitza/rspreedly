@@ -28,6 +28,11 @@ module RSpreedly
       return all if id == :all
       all.find{|plan| plan.id == id.to_i}
     end
+
+    def self.find_by_feature_level(feature_level)
+      return all if feature_level == :all
+      all.find{|plan| plan.feature_level == feature_level.to_s}
+    end    
     
     # Get a list of all subscription plans (more)
     # GET /api/v4/[short site name]/subscription_plans.xml
